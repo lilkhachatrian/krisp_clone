@@ -14,7 +14,7 @@ public:
 class BubbleSort : public SortingStrategy {
 public:
     void sort(std::vector<int>& arr) {
-        unsigned int length = arr.size();
+        int length = arr.size();
         bool swapped;
         int iterate = 0;
         do {
@@ -35,7 +35,7 @@ public:
 class SelectionSort : public SortingStrategy {
 public:
     void sort(std::vector<int>& arr){
-        unsigned int length = arr.size();
+        int length = arr.size();
         int min_index = 0;
         for(int i = 0; i < length - 1; ++i){
             for(int j = i + 1; j < length; ++j){
@@ -88,9 +88,6 @@ private:
     FileHandler file;
 
 public:
-    void input_file(std::string input){
-        file.readArrayFromFile(input);
-    }
     void select_strategy(){
         std::cout << "Choose an algorithm from the list.\n";
         std::cout << "Enter 1 for Bubble Sort or 2 for Selection Sort.\n";
@@ -106,9 +103,14 @@ public:
             std::cout << "Invalid input." << std::endl;
             return;
         }
-        selected_sort->sort(file.nums);
     }
+
+    void input_file(std::string input){
+        file.readArrayFromFile(input);
+    }
+
     void output_file(std::string output){
+        selected_sort->sort(file.nums);
         file.saveArrayToFile(output);
     }
 };
@@ -116,8 +118,8 @@ public:
 int main(){
 
     SortingApplication sample;
-    sample.select_strategy();
     sample.input_file("numbers.txt");
+    sample.select_strategy();
     sample.output_file("numbers.txt");
 
     return 0;
