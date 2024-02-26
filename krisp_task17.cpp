@@ -55,9 +55,9 @@ int main(){
     Circle circle(5);
     Rectangle rec(7, -6);
     try{
-        std::cout << "Area of the square: "<< square.area() << std::endl;
-        std::cout << "Area of the square: "<< circle.area() << std::endl;
-        std::cout << "Area of the square: "<< rec.area() << std::endl;
+        std::cout << "Area of square: "<< square.area() << std::endl;
+        std::cout << "Area of circle: "<< circle.area() << std::endl;
+        std::cout << "Area of rectangle: "<< rec.area() << std::endl;
     }
     catch (const char* exception){
         std::cout << "Exection: " << exception << std::endl;
