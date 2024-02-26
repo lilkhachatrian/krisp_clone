@@ -2,52 +2,56 @@
 
 template <typename T>
 class Shape{
-protected:
-    T side;
 public:
-    Shape(T prop){
-        if(prop > 0) side = prop;
-        throw 1;
-    }
-    virtual T area(){
-        return side * side;
-    }
+    virtual T area() = 0;
     ~Shape(){}
 };
 
 template <typename T>
-class Circle : public Shape<T> {
+class Circle : public Shape<T>{
+private:
+    T radius;
 public:
-    Circle(T radius) : Shape<T>(radius){
-
+    Circle(T r){
+        if(r > 0) radius = r;
+        else{
+            throw 1;
+        }
     }
     double area(){
-        return (2 * side) * 3.14;
+        return (2 * radius) * 3.14;
     }
     ~Circle(){}
 };
 
 template <typename T>
-class Rectangle : public Shape<T> {
+class Rectangle : public Shape<T>{
 private:
     T width;
+    T length;
 public:
-    Rectangle(T len, T w) : Shape<T>(len){
-
-        if(w > 0) width = w;
-        throw 1;
+    Rectangle(T len, T w){
+        if(len > 0 && w > 0) {
+            width = w;
+            length = len;
+        }
+        else {
+            throw 1;
+        }
     }
     T area(){
-        return side * width;
+        return length * width;
     }
     ~Rectangle(){}
 };
 
-
 int main(){
-
-    Rectangle<int> t1(4, 6);
-    std::cout << t1.area() << std::endl;
-
+    try{
+        Rectangle<int> r1(4, 6);
+        Circle<double> c1(-4);  
+    }
+    catch(...){
+        std::cout << "Wrong input.\n";
+    }
     return 0;
 }
