@@ -10,7 +10,9 @@ protected:
 public:
     Shape(double len){
         if(len > 0) side = len;
-        throw "Invalid properties";
+        else{
+          throw "Invalid properties";
+        }
     }
     virtual double area(){
         return (side * side);
@@ -38,7 +40,9 @@ public:
             side = len;
             width = w;
         }
-        throw "Invalid properties";
+        else{
+          throw "Invalid properties";
+        }
     }
     double area(){
         return side * width;
