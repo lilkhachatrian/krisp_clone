@@ -4,7 +4,7 @@ template <typename T>
 class Shape{
 public:
     virtual T area() = 0;
-    ~Shape(){}
+    virtual ~Shape(){}
 };
 
 template <typename T>
